@@ -1,23 +1,30 @@
 <div class="conatiner-main-product">
 
-  <div class="container-main title">
+  <div class="container-main product-title">
     <p class="fs-1 fw-bold">Products</p>
   </div>
 
-  <div class="add-button-product mb-3">
-    <button type="button" class="btn btn-primary">
-      <i class="fa-solid fa-plus"></i> Add Product
-    </button>
+  <div class="container-buttons-product d-flex flex-column flex-sm-row justify-content-between mb-3">
+    <div class="add-button-product mb-3 mb-sm-0">
+        <button type="button" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Add Product
+        </button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by ID" class="custom-input-search">
+        <button type="button" class="btn btn-primary" (click)="searchProducts()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
   </div>
 
-  <div class="search-bar mb-3">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by ID">
-    <button type="button" class="btn btn-primary" (click)="searchProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+  <div *ngIf="products.length === 0 && !notFoundMessage" class="alert alert-info">
+    No hay productos para mostrar en la tabla.
   </div>
 
 
     <div class="card">
-
       <p-table [value]="products" [tableStyle]="{'min-width': '40rem'}">
           <ng-template pTemplate="header" let-columns>
               <tr>

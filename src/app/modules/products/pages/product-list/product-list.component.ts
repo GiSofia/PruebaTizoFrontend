@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -10,13 +11,13 @@ import { ProductsService } from 'src/app/services/products/products.service';
 export class ProductListComponent implements OnInit {
 
   public products : Product[] = [];
-
   cols: any[] = [];
-
   searchTerm: string = '';
+  notFoundMessage: string = '';
+  emptyTableMessage: string = ''
 
 
-  constructor(private productsService: ProductsService){}
+  constructor(private productsService: ProductsService, private toastr: ToastrService){}
 
 
   ngOnInit(): void {
@@ -44,22 +45,37 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-
   searchProducts(): void {
+
     if (this.searchTerm.trim() !== '') {
       // Llama al servicio para buscar productos por ID
       this.productsService.getProductById(this.searchTerm)
-        .subscribe(product => this.products = product ? [product] : []);
+        .subscribe(
+          product => {
+            this.products = product ? [product] : [];
+
+            if (!product) {
+              this.toastr.warning(this.notFoundMessage, 'Producto no encontrado con el ID especificado');
+            }
+          },
+          error => {
+            if (error.status === 404) {
+              this.toastr.warning(this.notFoundMessage, 'Producto no encontrado con el ID especificado');
+            } else {
+              this.notFoundMessage = 'Error al buscar el producto. Por favor, inténtalo de nuevo.';
+              this.toastr.error(this.notFoundMessage, 'Error');
+            }
+          }
+        );
     } else {
-      // Si el término de búsqueda está vacío, carga todos los productos
+      // Si el input de búsqueda está vacío, carga todos los productos
       this.loadAllProducts();
     }
   }
+
 
   private loadAllProducts(): void {
     this.productsService.getProduct()
       .subscribe(products => this.products = products);
   }
-
-
 }
