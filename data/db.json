@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Juana Mendez",
+      "email": "Juana@example.com",
+      "role": "admin",
+      "active": true,
+      "loginUserId": 1
+    }
+  ],
+  "loginUser": [
+    {
+      "id": 1,
+      "userId": 1,
+      "username": "juanaM",
+      "password": "123"
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Ropa",
+      "active": true
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto 1",
+      "description": "Descripción del producto",
+      "price": 19.99,
+      "categoryId": 1,
+      "active": true
+    }
+  ]
+}
