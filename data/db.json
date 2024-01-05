@@ -2,36 +2,61 @@
   "users": [
     {
       "id": 1,
-      "username": "Juana Mendez",
-      "email": "Juana@example.com",
+      "name": "Juana",
+      "lastName": "Mendez",
+      "email": "juana@gigistore.com",
       "role": "admin",
-      "active": true,
-      "loginUserId": 1
+      "jobTitle": "Administrative Manager",
+      "birthDate": "1990-05-15"
+    },
+    {
+      "id": 2,
+      "name": "Marcela",
+      "lastName": "Torrez",
+      "email": "marcela@gigistore.com",
+      "role": "user",
+      "jobTitle": "Customer Support Representative",
+      "birthDate": "1985-11-22"
     }
   ],
   "loginUser": [
     {
       "id": 1,
-      "userId": 1,
-      "username": "juanaM",
+      "email": "juana@gigistore.com",
       "password": "123"
+    },
+    {
+      "id": 2,
+      "email": "marcela@gigistore.com",
+      "password": "marce123*"
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": 1,
-      "name": "Ropa",
-      "active": true
+      "category_name": "Ropa"
+    },
+    {
+      "id": 2,
+      "category_name": "Perfumes"
     }
   ],
   "products": [
     {
-      "id": 1,
-      "name": "Producto 1",
-      "description": "Descripción del producto",
+      "id": "001",
+      "product_name": "Blusa",
+      "description": "Blusa para dama estampadada",
+      "quantity" : 1,
       "price": 19.99,
-      "categoryId": 1,
-      "active": true
+      "status": "InStock"
+    },
+    {
+      "id": "002",
+      "product_name": "Vestido",
+      "description": "Vestido para dama",
+      "quantity" : 3,
+      "price": 15.00,
+      "status": "LowStock"
     }
   ]
 }

@@ -1,47 +1,38 @@
-<div class="conatiner-main-user">
+<div class="conatiner-main-category">
 
   <div class="container-main title">
-    <p class="fs-1 fw-bold">Users</p>
+    <p class="fs-1 fw-bold">Categories</p>
   </div>
 
   <div class="add-button-user mb-3">
     <button type="button" class="btn btn-primary">
-      <i class="fa-solid fa-plus"></i> Add User
+      <i class="fa-solid fa-plus"></i> Add Category
     </button>
   </div>
 
-  <div class="card">
-    <p-table [value]="users" [tableStyle]="{'min-width': '40rem'}">
+
+  <div class="card" style="max-width: 20rem;">
+    <p-table [value]="categories" [tableStyle]="{'max-width': '30rem'}">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th>Name </th>
-                <th>LastName</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Job Title</th>
-                <th>Birth Date</th>
                 <th>Actions</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-user let-columns="columns">
+        <ng-template pTemplate="body" let-category let-columns="columns">
           <tr>
-              <td>{{user.name}}</td>
-              <td>{{user.lastName}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.role}}</td>
-              <td>{{user.jobTitle}}</td>
-              <td>{{user.birthDate}}</td>
-              <td class="button-actions-user d-flex align-items-center">
+              <td>{{category.category_name}}</td>
+              <td class="button-actions-category d-flex align-items-center">
                 <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}">
                   <i class="fa-solid fa-pen"></i>
                 </button>
                 <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}">
                   <i class="fa-solid fa-trash"></i>
+
                 </button>
               </td>
           </tr>
       </ng-template>
-
     </p-table>
 </div>
 </div>

@@ -1,0 +1,52 @@
+<div class="conatiner-main-product">
+
+  <div class="container-main title">
+    <p class="fs-1 fw-bold">Products</p>
+  </div>
+
+  <div class="add-button-product mb-3">
+    <button type="button" class="btn btn-primary">
+      <i class="fa-solid fa-plus"></i> Add Product
+    </button>
+  </div>
+
+  <div class="search-bar mb-3">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by ID">
+    <button type="button" class="btn btn-primary" (click)="searchProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+
+
+    <div class="card">
+
+      <p-table [value]="products" [tableStyle]="{'min-width': '40rem'}">
+          <ng-template pTemplate="header" let-columns>
+              <tr>
+                  <th>Name </th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.product_name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price | currency:'USD'}}</td>
+                <td><p-tag [value]="product.status" [severity]="getSeverity(product.status) ?? 'defaultSeverity'"></p-tag></td>
+                <td class="button-actions-product d-flex align-items-center">
+                  <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+            </tr>
+        </ng-template>
+
+      </p-table>
+  </div>
+</div>

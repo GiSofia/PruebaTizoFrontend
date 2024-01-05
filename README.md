@@ -1,4 +1,11 @@
-# PruebaTecnicaTizo
+# Gigi Inventory-PruebaTecnicaTizo
+
+## Dev
+1. Clonar el proyecto
+2. Ejecutar ```npm install```
+3. Levantar backend ```npm run backend```
+4. Ejecutar app ```npm start``` / ```ng serve -o```
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
