@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ProductsRoutingModule } from './modules/products/products-routing.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
+    ProductsRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],

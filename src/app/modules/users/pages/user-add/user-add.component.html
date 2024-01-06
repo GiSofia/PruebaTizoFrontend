@@ -1,1 +1,69 @@
-<p>user-add works!</p>
+<div class="conatiner-main-user-add">
+
+  <div class="d-flex justify-content-between align-items-center">
+   <div class="container-main user-add-title">
+     <p class="fs-1 fw-bold">Add User</p>
+   </div>
+
+   <div class="back-button-user mb-8 mb-sm-0">
+     <button type="button" class="btn btn-danger" (click)="goBack()">
+       <i class="fa-solid fa-arrow-left"></i> Back
+     </button>
+   </div>
+  </div>
+
+   <div class="card col-md-6 p-2 mb-3">
+       <form [formGroup]="userForm" class="p-formgrid p-fluid" (ngSubmit)="onSubmit()">
+         <!-- ID -->
+         <div class="p-field mt-2">
+           <label for="id">ID</label>
+           <input id="id" type="text" pInputText formControlName="id" required />
+         </div>
+
+         <!-- User Name -->
+         <div class="p-field mt-2">
+           <label for="name">Name</label>
+           <input id="name" type="text" pInputText formControlName="name" required />
+         </div>
+
+         <!-- Last Name -->
+         <div class="p-field mt-2">
+           <label for="lastName">Last Name</label>
+           <input id="lastName" type="text" pInputText formControlName="lastName" required />
+         </div>
+
+         <!-- Email -->
+         <div class="p-field mt-2">
+           <label for="email">Email</label>
+           <input id="email" type="email" pInputText formControlName="email" required />
+         </div>
+
+         <!-- Role -->
+         <div class="p-field mt-2">
+           <label for="role">Role</label>
+           <input id="role" type="role" pInputText formControlName="role" required />
+         </div>
+
+         <!-- Job Title -->
+         <div class="p-field mt-2">
+           <label for="jobTitle">Job Title</label>
+           <input id="jobTitle" type="text" pInputText formControlName="jobTitle" required/>
+         </div>
+
+         <!-- Birth Date -->
+         <div class="p-field mt-2">
+          <label for="birthDate">Birth Date</label>
+          <input id="birthDate" type="text" pInputText formControlName="birthDate" required/>
+        </div>
+
+         <!-- Save Changes Button -->
+       <div class="d-flex justify-content-end p-2 mt-3">
+         <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2"><i class="fa-solid fa-floppy-disk"></i>
+           Save Changes
+         </button>
+       </div>
+     </form>
+   </div>
+ </div>
+
+

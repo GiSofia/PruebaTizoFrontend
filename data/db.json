@@ -17,6 +17,15 @@
       "role": "user",
       "jobTitle": "Customer Support Representative",
       "birthDate": "1985-11-22"
+    },
+    {
+      "id": "3",
+      "name": "Luis",
+      "lastName": "Herrera",
+      "email": "luis@gigistore.com",
+      "role": "user",
+      "jobTitle": "Support Tech",
+      "birthDate": "1995-05-09"
     }
   ],
   "loginUser": [
@@ -38,7 +47,7 @@
     },
     {
       "id": 2,
-      "category_name": "Perfumes"
+      "category_name": "Cosmeticos"
     }
   ],
   "products": [
@@ -46,7 +55,7 @@
       "id": "001",
       "product_name": "Blusa",
       "description": "Blusa para dama estampadada",
-      "quantity" : 1,
+      "quantity": 1,
       "price": 19.99,
       "status": "InStock"
     },
@@ -54,9 +63,25 @@
       "id": "002",
       "product_name": "Vestido",
       "description": "Vestido para dama",
-      "quantity" : 3,
-      "price": 15.00,
+      "quantity": 3,
+      "price": 15,
       "status": "LowStock"
+    },
+    {
+      "id": "004",
+      "product_name": "Locion Pink",
+      "description": "Locion Pink para dama",
+      "quantity": 5,
+      "price": 18,
+      "status": "InStock"
+    },
+    {
+      "id": "005",
+      "product_name": "Jeans Kalua",
+      "description": "Jeans Kalua para dama",
+      "quantity": 2,
+      "price": 12,
+      "status": "InStock"
     }
   ]
 }

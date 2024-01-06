@@ -6,24 +6,28 @@ import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
-import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { ProductListIdComponent } from './pages/product-list-id/product-list-id.component';
+import { RouterModule } from '@angular/router';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
   declarations: [
     ProductAddComponent,
     ProductListComponent,
-    ProductListIdComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
+    RouterModule,
     TableModule,
     TagModule,
     FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputNumberModule,
     ToastrModule.forRoot(),
   ]
 })

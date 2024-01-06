@@ -4,15 +4,25 @@ import { CategoryListComponent } from './pages/category-list/category-list.compo
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 
 //localhost:4200/categories
-const routes: Routes = [{
-  path: '',
-  component: CategoryListComponent,
-  children: [
-    {path: 'category-add', component: CategoryAddComponent},
-    {path: '**', redirectTo: 'list'},
-  ]
-}];
-
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'category-list',
+    pathMatch: 'full'
+  },
+  {
+    path: 'category-list',
+    component: CategoryListComponent,
+  },
+  {
+    path: 'category-list/category-add',
+    component: CategoryAddComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'category-list',
+  },
+];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

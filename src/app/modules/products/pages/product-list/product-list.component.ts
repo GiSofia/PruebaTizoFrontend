@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,10 +15,10 @@ export class ProductListComponent implements OnInit {
   cols: any[] = [];
   searchTerm: string = '';
   notFoundMessage: string = '';
-  emptyTableMessage: string = ''
+  emptyTableMessage: string = '';
 
 
-  constructor(private productsService: ProductsService, private toastr: ToastrService){}
+  constructor(private productsService: ProductsService, private toastr: ToastrService, private router: Router){}
 
 
   ngOnInit(): void {
@@ -55,14 +56,14 @@ export class ProductListComponent implements OnInit {
             this.products = product ? [product] : [];
 
             if (!product) {
-              this.toastr.warning(this.notFoundMessage, 'Producto no encontrado con el ID especificado');
+              this.toastr.warning(this.notFoundMessage, 'There is no product with the id');
             }
           },
           error => {
             if (error.status === 404) {
-              this.toastr.warning(this.notFoundMessage, 'Producto no encontrado con el ID especificado');
+              this.toastr.warning(this.notFoundMessage, 'There is no product with the id');
             } else {
-              this.notFoundMessage = 'Error al buscar el producto. Por favor, inténtalo de nuevo.';
+              this.notFoundMessage = 'Error al buscar el producto.';
               this.toastr.error(this.notFoundMessage, 'Error');
             }
           }
@@ -77,5 +78,23 @@ export class ProductListComponent implements OnInit {
   private loadAllProducts(): void {
     this.productsService.getProduct()
       .subscribe(products => this.products = products);
+  }
+
+  deleteProduct(id: string): void {
+    this.productsService.deleteProduct(id)
+      .subscribe(
+        success => {
+          if (success) {
+            this.toastr.success('Producto deleted!');
+            this.loadAllProducts(); // Recarga la lista de productos después de la eliminación
+          } else {
+            this.toastr.error('Failed to delete');
+          }
+        },
+        error => {
+          console.error('Failed to delete:', error);
+          this.toastr.error('Failed to delete');
+        }
+      );
   }
 }

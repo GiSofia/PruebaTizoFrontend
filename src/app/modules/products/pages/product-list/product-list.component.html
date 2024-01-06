@@ -6,9 +6,9 @@
 
   <div class="container-buttons-product d-flex flex-column flex-sm-row justify-content-between mb-3">
     <div class="add-button-product mb-3 mb-sm-0">
-        <button type="button" class="btn btn-primary">
-            <i class="fa-solid fa-plus"></i> Add Product
-        </button>
+      <button type="button" class="btn btn-primary" [routerLink]="['product-add']">
+        <i class="fa-solid fa-plus"></i> Add Product
+      </button>
     </div>
 
     <div class="search-bar">
@@ -47,7 +47,7 @@
                   <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}">
                     <i class="fa-solid fa-pen"></i>
                   </button>
-                  <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}">
+                  <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}" (click)="deleteProduct(product.id)">
                     <i class="fa-solid fa-trash"></i>
                   </button>
                 </td>
@@ -57,3 +57,5 @@
       </p-table>
   </div>
 </div>
+
+
