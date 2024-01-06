@@ -30,7 +30,9 @@ export class ProductListComponent implements OnInit {
         { field: 'productName', header: 'Name' },
         { field: 'description', header: 'Description' },
         { field: 'quantity', header: 'Quantity' },
-        { field: 'price', header: 'Status' }
+        { field: 'price', header: 'Price' },
+        { field: 'status', header: 'Status' },
+        { field: 'isActive', header: 'Active' }
     ];
   }
 
@@ -80,21 +82,33 @@ export class ProductListComponent implements OnInit {
       .subscribe(products => this.products = products);
   }
 
+
   deleteProduct(id: string): void {
-    this.productsService.deleteProduct(id)
-      .subscribe(
-        success => {
-          if (success) {
-            this.toastr.success('Producto deleted!');
-            this.loadAllProducts(); // Recarga la lista de productos después de la eliminación
-          } else {
-            this.toastr.error('Failed to delete');
-          }
-        },
-        error => {
-          console.error('Failed to delete:', error);
-          this.toastr.error('Failed to delete');
+    this.productsService.getProductById(id).subscribe(
+      (product) => {
+        if (product) {
+          // Cambiar el estado del producto a "inactivo"
+          product.isActive = false;
+
+          // Actualizar el producto
+          this.productsService.updateProduct(product).subscribe(
+            () => {
+              this.toastr.success('Product inactive.');
+              this.loadAllProducts();
+            },
+            (error) => {
+              this.toastr.error('Failed to update product status', error);
+            }
+          );
+        } else {
+          this.toastr.error('Product not found ');
         }
-      );
+      },
+      (error) => {
+        this.toastr.error('Failed to fetch product');
+      }
+    );
   }
+
+
 }

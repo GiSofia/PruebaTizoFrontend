@@ -10,12 +10,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
 
 
 @NgModule({
   declarations: [
     CategoryAddComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    CategoryUpdateComponent
   ],
   imports: [
     CommonModule,

@@ -1,16 +1,16 @@
-<div class="conatiner-main-product-add">
+<div class="container-main-product-add">
 
- <div class="d-flex justify-content-between align-items-center">
-  <div class="container-main product-add-title">
-    <p class="fs-1 fw-bold">Add Product</p>
-  </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="container-main product-add-title">
+      <p class="fs-1 fw-bold">Add Product</p>
+    </div>
 
-  <div class="back-button-product mb-8 mb-sm-0">
-    <button type="button" class="btn btn-danger" (click)="goBack()">
-      <i class="fa-solid fa-arrow-left"></i> Back
-    </button>
+    <div class="back-button-product mb-8 mb-sm-0">
+      <button type="button" class="btn btn-danger" (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </button>
+    </div>
   </div>
- </div>
 
   <div class="card col-md-6 p-2 mb-3">
       <form [formGroup]="productForm" class="p-formgrid p-fluid" (ngSubmit)="onSubmit()">
@@ -50,12 +50,18 @@
           <input id="status" type="text" pInputText formControlName="status" required/>
         </div>
 
+         <!-- Is Active -->
+         <div class="p-field mt-2" hidden>
+          <label for="isActive">Is Active</label>
+          <input id="isActive" type="text" pInputText formControlName="isActive" required/>
+        </div>
+
         <!-- Save Changes Button -->
-      <div class="d-flex justify-content-end p-2 mt-3">
-        <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2"><i class="fa-solid fa-floppy-disk"></i>
-          Save Changes
-        </button>
-      </div>
+        <div class="d-flex justify-content-end p-2 mt-3">
+          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2"><i class="fa-solid fa-floppy-disk"></i>
+            Save Changes
+          </button>
+        </div>
     </form>
   </div>
 </div>

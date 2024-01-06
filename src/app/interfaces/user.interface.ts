@@ -6,4 +6,5 @@ export interface User {
   role:      string;
   jobTitle:  string;
   birthDate: string;
+  isActive: boolean;
 }

@@ -1,6 +1,6 @@
-<div class="conatiner-main-user">
+<div class="container-main-user">
 
-  <div class="container-main title">
+  <div class="container-main user-title">
     <p class="fs-1 fw-bold">Users</p>
   </div>
 
@@ -33,6 +33,7 @@
                 <th>Role</th>
                 <th>Job Title</th>
                 <th>Birth Date</th>
+                <th>Active</th>
                 <th>Actions</th>
             </tr>
         </ng-template>
@@ -44,8 +45,9 @@
               <td>{{user.role}}</td>
               <td>{{user.jobTitle}}</td>
               <td>{{user.birthDate}}</td>
+              <td>{{user.isActive}}</td>
               <td class="button-actions-user d-flex align-items-center">
-                <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}">
+                <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}" [routerLink]="['user-update', user.id]">
                   <i class="fa-solid fa-pen"></i>
                 </button>
                 <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}" (click)="deleteUser(user.id)">
@@ -53,8 +55,7 @@
                 </button>
               </td>
           </tr>
-      </ng-template>
-
+        </ng-template>
     </p-table>
-</div>
+  </div>
 </div>

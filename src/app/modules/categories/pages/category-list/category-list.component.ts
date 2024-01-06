@@ -26,7 +26,8 @@ export class CategoryListComponent implements OnInit {
 
       this.cols = [
         { field: '#', header: 'ID' },
-        { field: 'categoryName', header: 'Category Name' }
+        { field: 'categoryName', header: 'Category Name' },
+        { field: 'isActive', header: 'Active' }
     ];
   }
 
@@ -53,7 +54,7 @@ export class CategoryListComponent implements OnInit {
           }
         );
     } else {
-      // Si el input de búsqueda está vacío, carga todos los productos
+      // Si el input de búsqueda está vacío, carga todos los categorias
       this.loadAllCategories();
     }
   }
@@ -65,21 +66,30 @@ export class CategoryListComponent implements OnInit {
   }
 
   deleteCategory(id: number): void {
-    this.categoriesService.deleteCategory(id)
-      .subscribe(
-        success => {
-          if (success) {
-            this.toastr.success('Category deleted!');
-            this.loadAllCategories(); // Recarga la lista de categories después de la eliminación
-          } else {
-            this.toastr.error('Failed to delete');
-          }
-        },
-        error => {
-          console.error('Failed to delete:', error);
-          this.toastr.error('Failed to delete');
+    this.categoriesService.getCategoryById(id).subscribe(
+      (category) => {
+        if (category) {
+          // Cambiar el estado del producto a "inactivo"
+          category.isActive = false;
+
+          // Actualizar la categoria
+          this.categoriesService.updateCategory(category).subscribe(
+            () => {
+              this.toastr.success('Category inactive.');
+              this.loadAllCategories();
+            },
+            (error) => {
+              this.toastr.error('Failed to update category status', error);
+            }
+          );
+        } else {
+          this.toastr.error('Category not found ');
         }
-      );
+      },
+      (error) => {
+        this.toastr.error('Failed to fetch category');
+      }
+    );
   }
 
 

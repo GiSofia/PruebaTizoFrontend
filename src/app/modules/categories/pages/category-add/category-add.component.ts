@@ -15,6 +15,7 @@ export class CategoryAddComponent {
   public categoryForm = new FormGroup({
     id:            new FormControl(0),
     category_name: new FormControl(''),
+    isActive:      new FormControl(true)
   });
 
   constructor(private categoriesService: CategoriesService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute){}
@@ -38,15 +39,6 @@ export class CategoryAddComponent {
       .subscribe(category =>{
         this.toastr.success(`${category.category_name} add!`);
     });
-
-    // if(this.currentProduct.id){
-    //   this.productsService.updateProduct(this.currentProduct)
-    //   .subscribe(product =>{
-
-    //   });
-
-    //   return
-    // }
   }
 }
 

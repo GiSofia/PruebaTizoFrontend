@@ -29,14 +29,15 @@ export class UserListComponent implements OnInit {
         { field: 'email', header: 'Email' },
         { field: 'role', header: 'Role' },
         { field: 'jobTitle', header: 'Job Title' },
-        { field: 'birthDate', header: 'Birth Date' }
+        { field: 'birthDate', header: 'Birth Date' },
+        { field: 'isActive', header: 'Active' }
     ];
   }
 
   searchUsers(): void {
 
     if (this.searchTerm!== null) {
-      // Llama al servicio para buscar productos por ID
+      // Llama al servicio para buscar usuarios por ID
       this.usersService.getUserById(this.searchTerm)
         .subscribe(
           user => {
@@ -56,7 +57,7 @@ export class UserListComponent implements OnInit {
           }
         );
     } else {
-      // Si el input de búsqueda está vacío, carga todos los productos
+      // Si el input de búsqueda está vacío, carga todos los usuarios
       this.loadAllUsers();
     }
   }
@@ -68,21 +69,29 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUser(id: number): void {
-    this.usersService.deleteUser(id)
-      .subscribe(
-        success => {
-          if (success) {
-            this.toastr.success('User deleted!');
-            this.loadAllUsers(); // Recarga la lista de users después de la eliminación
-          } else {
-            this.toastr.error('Failed to delete');
-          }
-        },
-        error => {
-          console.error('Failed to delete:', error);
-          this.toastr.error('Failed to delete');
-        }
-      );
-  }
+    this.usersService.getUserById(id).subscribe(
+      (user) => {
+        if (user) {
+          // Cambiar el estado del usuario a "inactivo"
+          user.isActive = false;
 
+          // Actualizar el usuario
+          this.usersService.updateUser(user).subscribe(
+            () => {
+              this.toastr.success('User inactive.');
+              this.loadAllUsers();
+            },
+            (error) => {
+              this.toastr.error('Failed to update user status', error);
+            }
+          );
+        } else {
+          this.toastr.error('User not found ');
+        }
+      },
+      (error) => {
+        this.toastr.error('Failed to fetch User');
+      }
+    );
+  }
 }

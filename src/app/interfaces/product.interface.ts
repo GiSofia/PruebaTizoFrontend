@@ -5,4 +5,5 @@ export interface Product {
   quantity:        number;
   price:         number;
   status:       string;
+  isActive: boolean;
 }

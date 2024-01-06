@@ -6,12 +6,11 @@ import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
-  selector: 'app-user-add',
-  templateUrl: './user-add.component.html',
-  styleUrls: ['./user-add.component.css']
+  selector: 'app-user-update',
+  templateUrl: './user-update.component.html',
+  styleUrls: ['./user-update.component.css']
 })
-export class UserAddComponent {
-
+export class UserUpdateComponent {
   public userForm = new FormGroup({
     id:            new FormControl(0),
     name: new FormControl(''),
@@ -25,25 +24,44 @@ export class UserAddComponent {
 
   constructor(private usersService: UsersService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute){}
 
-
   get currentUser(): User{
     const user = this.userForm.value as User;
 
     return user;
   }
 
+  ngOnInit() {
+    //Obteniendo el id desde el parametro de la ruta
+    this.route.params.subscribe(params => {
+      const userId = params['id'];
+
+      this.usersService.getUserById(userId).subscribe(
+        (user) => {
+          // Asignando los valores del usuario al formulario
+          this.userForm.reset(user);
+        },
+        (error) => {
+          this.toastr.error(`Error getting user with id ${userId}:`, error);
+        }
+      );
+    });
+  }
+
   goBack(): void {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
 
   onSubmit(): void{
 
     if(this.userForm.invalid) return;
 
-    this.usersService.addUser(this.currentUser)
+    if(this.currentUser.id){
+      this.usersService.updateUser(this.currentUser)
       .subscribe(user =>{
-        this.toastr.success(`${user.name} add!`);
-    });
+        this.toastr.success(`User ${user.name} with id ${user.id} updated!`);
+      });
+
+      return
+    }
   }
 }

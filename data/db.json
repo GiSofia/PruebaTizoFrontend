@@ -7,7 +7,8 @@
       "email": "juana@gigistore.com",
       "role": "admin",
       "jobTitle": "Administrative Manager",
-      "birthDate": "1990-05-15"
+      "birthDate": "1990-05-15",
+      "isActive": true
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "email": "marcela@gigistore.com",
       "role": "user",
       "jobTitle": "Customer Support Representative",
-      "birthDate": "1985-11-22"
+      "birthDate": "1985-11-23",
+      "isActive": "true"
     },
     {
       "id": "3",
@@ -25,29 +27,44 @@
       "email": "luis@gigistore.com",
       "role": "user",
       "jobTitle": "Support Tech",
-      "birthDate": "1995-05-09"
+      "birthDate": "1995-05-09",
+      "isActive": true
     }
   ],
   "loginUser": [
     {
       "id": 1,
       "email": "juana@gigistore.com",
-      "password": "123"
+      "password": "123",
+      "isActive": true
     },
     {
       "id": 2,
       "email": "marcela@gigistore.com",
-      "password": "marce123*"
+      "password": "marce123*",
+      "isActive": true
     }
   ],
   "categories": [
     {
       "id": 1,
-      "category_name": "Ropa"
+      "category_name": "Ropa",
+      "isActive": true
     },
     {
       "id": 2,
-      "category_name": "Cosmeticos"
+      "category_name": "Cosmeticos",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "category_name": "Calzado",
+      "isActive": "true"
+    },
+    {
+      "id": 4,
+      "category_name": "Perfumes",
+      "isActive": true
     }
   ],
   "products": [
@@ -57,7 +74,8 @@
       "description": "Blusa para dama estampadada",
       "quantity": 1,
       "price": 19.99,
-      "status": "InStock"
+      "status": "InStock",
+      "isActive": true
     },
     {
       "id": "002",
@@ -65,15 +83,17 @@
       "description": "Vestido para dama",
       "quantity": 3,
       "price": 15,
-      "status": "LowStock"
+      "status": "LowStock",
+      "isActive": true
     },
     {
       "id": "004",
       "product_name": "Locion Pink",
       "description": "Locion Pink para dama",
       "quantity": 5,
-      "price": 18,
-      "status": "InStock"
+      "price": 20,
+      "status": "InStock",
+      "isActive": "true"
     },
     {
       "id": "005",
@@ -81,7 +101,8 @@
       "description": "Jeans Kalua para dama",
       "quantity": 2,
       "price": 12,
-      "status": "InStock"
+      "status": "InStock",
+      "isActive": "true"
     }
   ]
 }

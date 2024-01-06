@@ -11,12 +11,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 
 
 @NgModule({
   declarations: [
     ProductAddComponent,
     ProductListComponent,
+    ProductUpdateComponent,
   ],
   imports: [
     CommonModule,

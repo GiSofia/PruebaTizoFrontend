@@ -1,4 +1,4 @@
-<div class="conatiner-main-product">
+<div class="container-main-product">
 
   <div class="container-main product-title">
     <p class="fs-1 fw-bold">Products</p>
@@ -33,6 +33,7 @@
                   <th>Quantity</th>
                   <th>Price</th>
                   <th>Status</th>
+                  <th>Active</th>
                   <th>Actions</th>
               </tr>
           </ng-template>
@@ -43,8 +44,9 @@
                 <td>{{product.quantity}}</td>
                 <td>{{product.price | currency:'USD'}}</td>
                 <td><p-tag [value]="product.status" [severity]="getSeverity(product.status) ?? 'defaultSeverity'"></p-tag></td>
+                <td>{{product.isActive}}</td>
                 <td class="button-actions-product d-flex align-items-center">
-                  <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}">
+                  <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}" [routerLink]="['product-update', product.id]">
                     <i class="fa-solid fa-pen"></i>
                   </button>
                   <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}" (click)="deleteProduct(product.id)">

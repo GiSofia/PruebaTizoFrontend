@@ -1,11 +1,11 @@
-<div class="container-main-category-add">
+<div class="container-main-category-update">
 
   <div class="d-flex justify-content-between align-items-center">
-    <div class="container-main category-add-title">
-    <p class="fs-1 fw-bold">Add Category</p>
+    <div class="container-main category-update-title">
+      <p class="fs-1 fw-bold">Update Category</p>
     </div>
 
-    <div class="back-button-product mb-8 mb-sm-0">
+    <div class="back-button-category mb-8 mb-sm-0">
       <button type="button" class="btn btn-danger" (click)="goBack()">
         <i class="fa-solid fa-arrow-left"></i> Back
       </button>
@@ -27,7 +27,7 @@
         </div>
 
         <!-- Is Active -->
-        <div class="p-field mt-2" hidden>
+        <div class="p-field mt-2" >
           <label for="isActive">Is Active</label>
           <input id="isActive" type="text" pInputText formControlName="isActive" required/>
         </div>
@@ -41,5 +41,6 @@
     </form>
   </div>
 </div>
+
 
 
