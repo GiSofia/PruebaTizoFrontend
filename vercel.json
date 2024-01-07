@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "builds": [
+    { "src": "angular.json", "use": "@vercel/static-build" },
+    { "src": "backend", "use": "@vercel/static-build" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/backend/(.*)", "dest": "/backend/$1" },
+    { "src": ".*", "dest": "/index.html" }
+  ]
+}
