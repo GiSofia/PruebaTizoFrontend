@@ -20,16 +20,20 @@ export class LoginPageComponent {
   }
 
   login(): void {
+
+    console.log(this.loginForm.value)
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
+      if (!email || !password) {
+        this.toastr.error('Por favor, ingresa tanto el email como la contraseña.');
+        return;
+      }
+
       this.authService.login(email, password).subscribe(
         (response: any) => {
-          console.log('Operación exitosa');
           this.authService.saveToken(response.token);
-
-          this.toastr.success('Logged in!');
-          // Redirige al usuario al dashboard después del inicio de sesión
+          this.toastr.success('Logged In!');
           this.router.navigate(['/dashboard']);
         },
         (error) => {
@@ -38,4 +42,5 @@ export class LoginPageComponent {
       );
     }
   }
+
 }

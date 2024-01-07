@@ -5,6 +5,7 @@
       "name": "Juana",
       "lastName": "Mendez",
       "email": "juana@gigistore.com",
+      "password": "12345",
       "role": "admin",
       "jobTitle": "Administrative Manager",
       "birthDate": "1990-05-15",
@@ -15,6 +16,7 @@
       "name": "Marcela",
       "lastName": "Torrez",
       "email": "marcela@gigistore.com",
+      "password": "marce123*",
       "role": "user",
       "jobTitle": "Customer Support Representative",
       "birthDate": "1985-11-23",
@@ -25,17 +27,29 @@
       "name": "Luis",
       "lastName": "Herrera",
       "email": "luis@gigistore.com",
+      "password": "LH09",
       "role": "user",
       "jobTitle": "Support Tech",
       "birthDate": "1995-05-09",
       "isActive": true
+    },
+    {
+      "id": "4",
+      "name": "Cristina",
+      "lastName": "Lopez",
+      "email": "cristina@gigistore.com",
+      "password": "car20",
+      "role": "user",
+      "jobTitle": "Marketing Specialist ",
+      "birthDate": "2009-01-07",
+      "isActive": "true"
     }
   ],
   "loginUser": [
     {
       "id": 1,
       "email": "juana@gigistore.com",
-      "password": "123",
+      "password": "12345",
       "isActive": true
     },
     {
