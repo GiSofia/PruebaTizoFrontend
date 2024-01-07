@@ -18,6 +18,19 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
+  getProductCount(): Observable<number> {
+    return this.getProduct().pipe(
+      map(products => products.length)
+    );
+  }
+
+  getActiveProductCount(): Observable<number> {
+    return this.getProduct().pipe(
+      map(products => products.filter(product => product.isActive).length)
+    );
+  }
+
+
   getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
   }

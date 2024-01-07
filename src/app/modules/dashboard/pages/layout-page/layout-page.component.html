@@ -1,9 +1,26 @@
-<div class="conatiner-main">
-
+<div class="container-main">
   <div class="container-main title">
     <p class="fs-1 fw-bold">Dashboard</p>
   </div>
 
+  <div class="container-chart-dashboard row justify-content-evenly">
+    <div class="col-md-6">
+      <div class="container-main chart card mx-auto" style="max-width: 400px;">
+        <div class="text-center">
+          <p class="fw-bold">Products(Active/Inactive)</p>
+          <p-chart type="doughnut" [data]="chartData" [style]="{'width': '80%', 'height': '450px'}"></p-chart>
+        </div>
+      </div>
+    </div>
 
-
+    <div class="col-md-6">
+      <div class="container-main chart card mx-auto" style="max-width: 400px;">
+        <div class="text-center">
+          <p class="fw-bold">Product Status</p>
+          <p-chart type="doughnut" [data]="statusChartData" [style]="{'width': '80%', 'height': '450px'}"></p-chart>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

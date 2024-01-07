@@ -150,7 +150,7 @@
       "quantity": 3,
       "price": 15,
       "status": "LowStock",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "004",
@@ -177,7 +177,7 @@
       "quantity": 5,
       "price": 8,
       "status": "OutOfStock",
-      "isActive": true
+      "isActive": false
     }
   ]
 }

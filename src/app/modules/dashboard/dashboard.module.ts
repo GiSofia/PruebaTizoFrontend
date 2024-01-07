@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { ChartModule } from 'primeng/chart';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -12,9 +13,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    LayoutPageComponent
+    LayoutPageComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), ChartModule],
   exports: [RouterModule],
 })
 export class DashboardModule { }
