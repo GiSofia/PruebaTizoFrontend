@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "builds": [
     { "src": "angular.json", "use": "@vercel/static-build" },
     { "src": "backend", "use": "@vercel/static-build" }
