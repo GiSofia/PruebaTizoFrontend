@@ -8,13 +8,22 @@
         <!-- Email -->
         <div class="p-field mt-2">
           <label for="email">Email</label>
-          <input id="email" type="text" pInputText formControlName="email" required />
+          <input id="email" type="email" pInputText formControlName="email" required />
+          <div *ngIf="loginForm.get('email')?.hasError('required')" class="text-danger">
+            Email is required.
+          </div>
+          <div *ngIf="loginForm.get('email')?.hasError('email')" class="text-danger">
+            Please enter a valid email address.
+          </div>
         </div>
 
         <!-- Password -->
         <div class="p-field mt-2">
           <label for="password">Password</label>
-          <input id="password" type="password" pInputText formControlName="password" placeholder="*********" required/>
+          <input id="password" type="password" pInputText formControlName="password" required />
+          <div *ngIf="loginForm.get('password')?.hasError('required')" class="text-danger">
+            Password is required.
+          </div>
         </div>
 
         <!-- Save Changes Button -->
