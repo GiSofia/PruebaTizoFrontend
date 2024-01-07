@@ -15,7 +15,7 @@
   <div class="card col-md-6 p-2 mb-3">
       <form [formGroup]="categoryForm" class="p-formgrid p-fluid" (ngSubmit)="onSubmit()">
         <!-- ID -->
-        <div class="p-field mt-2">
+        <div class="p-field mt-2" hidden>
           <label for="id">ID</label>
           <p-inputNumber id="id"  formControlName="id" class="p-inputtext-sm"></p-inputNumber>
         </div>

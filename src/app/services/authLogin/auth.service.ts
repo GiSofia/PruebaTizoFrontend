@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environments } from 'src/app/environments/enviroments';
+import { LoginUser } from 'src/app/interfaces/loginUser.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +14,27 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
-    const body = { email, password };
-    return this.http.post(`${this.baseUrl}/loginUser`, body);
+  login(email: string, password: string): Observable<LoginUser> {
+    return this.http.get<LoginUser[]>(`${this.baseUrl}/loginUser?email=${email}&password=${password}`).pipe(
+      map(users => users[0]),
+      catchError(error => throwError(error))
+    );
   }
 
-  // Guardar el token en el localStorage
-  saveToken(token: string): void {
-    localStorage.setItem('token', token);
+  saveUserId(userId: number): void {
+    localStorage.setItem('userId', userId.toString());
   }
 
-  // Obtener token del localStorage
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  getUserId(): number | null {
+    const userIdStr = localStorage.getItem('userId');
+    return userIdStr ? parseInt(userIdStr, 10) : null;
   }
 
-  // Verificar si el usuario está autenticado
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!this.getUserId();
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
   }
 }

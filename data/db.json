@@ -23,7 +23,7 @@
       "isActive": "true"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Luis",
       "lastName": "Herrera",
       "email": "luis@gigistore.com",
@@ -34,22 +34,22 @@
       "isActive": true
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Cristina",
       "lastName": "Lopez",
       "email": "cristina@gigistore.com",
-      "password": "car20",
+      "password": "car20*",
       "role": "user",
       "jobTitle": "Marketing Specialist ",
       "birthDate": "2009-01-07",
       "isActive": "true"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Luisa",
       "lastName": "Narvaez",
       "email": "luisa@gigistore.com",
-      "password": "170*",
+      "password": "120*",
       "role": "user",
       "jobTitle": "Support Tech",
       "birthDate": "1997-07-11",
@@ -76,15 +76,15 @@
       "isActive": true
     },
     {
-      "id": 3,
+      "id": 4,
       "email": "cristina@gigistore.com",
-      "password": "car20",
-      "isActive": true
+      "password": "car20*",
+      "isActive": "true"
     },
     {
-      "id": "5",
+      "id": 5,
       "email": "luisa@gigistore.com",
-      "password": "170*",
+      "password": "120*",
       "isActive": "true"
     }
   ],
@@ -96,7 +96,7 @@
     },
     {
       "id": 2,
-      "category_name": "Cosmeticos",
+      "category_name": "Joyeria",
       "isActive": true
     },
     {

@@ -52,12 +52,15 @@ export class UserUpdateComponent {
   goBack(): void {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
+
   onSubmit(): void {
     if (this.userForm.invalid) return;
 
     // Actualizar el usuario
     this.usersService.updateUser(this.currentUser).subscribe(updatedUser => {
       this.toastr.success(`User ${updatedUser.name} with id ${updatedUser.id} updated!`);
+
+      console.log("UserService: ", updatedUser.id)
 
       // Actualizar la información de inicio de sesión
       const loginUserData = {

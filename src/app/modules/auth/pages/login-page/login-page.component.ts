@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/authLogin/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginUser } from 'src/app/interfaces/loginUser.interface';
 
 @Component({
   selector: 'app-login-page',
@@ -20,8 +21,6 @@ export class LoginPageComponent {
   }
 
   login(): void {
-
-    console.log(this.loginForm.value)
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
@@ -31,16 +30,20 @@ export class LoginPageComponent {
       }
 
       this.authService.login(email, password).subscribe(
-        (response: any) => {
-          this.authService.saveToken(response.token);
-          this.toastr.success('Logged In!');
-          this.router.navigate(['/dashboard']);
+        (user: LoginUser) => {
+          if (user) {
+            this.authService.saveUserId(user.id);
+            this.toastr.success('Logged In!');
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.toastr.error('Credenciales incorrectas.');
+          }
         },
         (error) => {
           console.error('Error de autenticación', error);
+          this.toastr.error('Error de autenticación. Por favor, inténtalo de nuevo.');
         }
       );
     }
   }
-
 }
