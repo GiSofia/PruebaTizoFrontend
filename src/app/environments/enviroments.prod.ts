@@ -1,4 +1,4 @@
 
 export const environments = {
-  baseUrl: 'http://gigi-inventory'
+  baseUrl: 'prueba-tizo-frontend-j4198q4e2-giuliana-saborios-projects.vercel.app'
 }
