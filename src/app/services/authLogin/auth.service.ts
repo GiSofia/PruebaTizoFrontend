@@ -12,6 +12,7 @@ import { User } from 'src/app/interfaces/user.interface';
 export class AuthService {
 
   private baseUrl: string = environments.baseUrl;
+  private actualUserId: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,7 @@ export class AuthService {
         mergeMap(user => {
             // Verificar si el usuario está activo antes de permitir el inicio de sesión
             if (user && user.isActive) {
+              this.actualUserId = user.id.toString();
                 return of(user);
             } else {
                 return throwError('User is not active');
@@ -41,7 +43,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.getUserId();
+    return !!this.verifyUserWithId();
   }
 
   isAdmin(): Observable<boolean> {
@@ -60,5 +62,14 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('userId');
+    this.actualUserId = '';
+  }
+
+  verifyUserWithId(): boolean {
+    let localStorageUserId = localStorage.getItem('userId') ? localStorage.getItem('userId') : null;
+    if (localStorageUserId !== null) {
+      return this.actualUserId === localStorageUserId;
+    }
+    return false;
   }
 }
