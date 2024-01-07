@@ -45,7 +45,7 @@
                 <td>{{product.price | currency:'USD'}}</td>
                 <td><p-tag [value]="product.status" [severity]="getSeverity(product.status) ?? 'defaultSeverity'"></p-tag></td>
                 <td>{{product.isActive}}</td>
-                <td class="button-actions-product d-flex align-items-center">
+                <td class="button-actions-product d-flex align-items-center" *ngIf="showUsersOption">
                   <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}" [routerLink]="['product-update', product.id]">
                     <i class="fa-solid fa-pen"></i>
                   </button>

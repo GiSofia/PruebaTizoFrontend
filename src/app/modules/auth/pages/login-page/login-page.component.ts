@@ -40,8 +40,8 @@ export class LoginPageComponent {
           }
         },
         (error) => {
-          console.error('Authentication Error.', error);
-          this.toastr.error('Authentication Error. Please try again.');
+          //console.error('Authentication Error.', error);
+          this.toastr.error('Authentication Error. User is not active.');
         }
       );
     }

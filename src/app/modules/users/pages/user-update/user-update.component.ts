@@ -67,6 +67,7 @@ export class UserUpdateComponent {
         id: updatedUser.id,
         email: this.currentUser.email,
         password: this.currentUser.password,
+        role: this.currentUser.role,
         isActive: this.currentUser.isActive,
       };
 

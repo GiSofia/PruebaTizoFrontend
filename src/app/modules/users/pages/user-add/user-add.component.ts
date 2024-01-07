@@ -52,6 +52,7 @@ export class UserAddComponent {
       id: this.currentUser.id,
       email: this.currentUser.email,
       password: this.currentUser.password,
+      role: this.currentUser.role,
       isActive: this.currentUser.isActive,
     };
 

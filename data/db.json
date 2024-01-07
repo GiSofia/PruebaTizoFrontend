@@ -20,7 +20,7 @@
       "role": "user",
       "jobTitle": "Customer Support Representative",
       "birthDate": "1985-11-23",
-      "isActive": "true"
+      "isActive": true
     },
     {
       "id": 3,
@@ -42,7 +42,7 @@
       "role": "user",
       "jobTitle": "Marketing Specialist ",
       "birthDate": "2009-01-07",
-      "isActive": "true"
+      "isActive": true
     },
     {
       "id": 5,
@@ -53,7 +53,18 @@
       "role": "user",
       "jobTitle": "Support Tech",
       "birthDate": "1997-07-11",
-      "isActive": "true"
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "name": "Elisa",
+      "lastName": "Martinez",
+      "email": "elisa@gigistore.com",
+      "password": "150*",
+      "role": "user",
+      "jobTitle": "Marketing Specialist ",
+      "birthDate": "1999-02-07",
+      "isActive": true
     }
   ],
   "loginUser": [
@@ -61,31 +72,43 @@
       "id": 1,
       "email": "juana@gigistore.com",
       "password": "12345",
+      "role": "admin",
       "isActive": true
     },
     {
       "id": 2,
       "email": "marcela@gigistore.com",
       "password": "marce123*",
+      "role": "user",
       "isActive": true
     },
     {
       "id": 3,
       "email": "luis@gigistore.com",
       "password": "LH09",
+      "role": "user",
       "isActive": true
     },
     {
       "id": 4,
       "email": "cristina@gigistore.com",
       "password": "car20*",
-      "isActive": "true"
+      "role": "user",
+      "isActive": true
     },
     {
       "id": 5,
       "email": "luisa@gigistore.com",
       "password": "120*",
-      "isActive": "true"
+      "role": "user",
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "email": "elisa@gigistore.com",
+      "password": "150*",
+      "role": "user",
+      "isActive": true
     }
   ],
   "categories": [
@@ -102,7 +125,7 @@
     {
       "id": 3,
       "category_name": "Calzado",
-      "isActive": "true"
+      "isActive": true
     },
     {
       "id": 4,
@@ -136,7 +159,7 @@
       "quantity": 5,
       "price": 20,
       "status": "InStock",
-      "isActive": "true"
+      "isActive": true
     },
     {
       "id": "005",
@@ -145,7 +168,7 @@
       "quantity": 2,
       "price": 12,
       "status": "InStock",
-      "isActive": "true"
+      "isActive": true
     },
     {
       "id": "006",
@@ -153,7 +176,7 @@
       "description": "Palette Milani Punk",
       "quantity": 5,
       "price": 8,
-      "status": "InStock",
+      "status": "OutOfStock",
       "isActive": true
     }
   ]

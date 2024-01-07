@@ -83,7 +83,7 @@
         <!-- Is Active -->
         <div class="p-field mt-2">
           <label for="isActive">Is Active</label>
-          <input id="isActive" type="text" pInputText formControlName="isActive" required/>
+          <input id="isActive" type="checkbox" pInputSwitch formControlName="isActive" />
           <div *ngIf="productForm.get('isActive')?.hasError('required')" class="text-danger">
             IsActive is required.
           </div>

@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authLogin/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,9 +17,11 @@ export class ProductListComponent implements OnInit {
   searchTerm: string = '';
   notFoundMessage: string = '';
   emptyTableMessage: string = '';
+  isAdmin: boolean = false;
+  showUsersOption: boolean = false;
 
 
-  constructor(private productsService: ProductsService, private toastr: ToastrService, private router: Router){}
+  constructor(private productsService: ProductsService, private authService: AuthService, private toastr: ToastrService, private router: Router){}
 
 
   ngOnInit(): void {
@@ -34,6 +37,16 @@ export class ProductListComponent implements OnInit {
         { field: 'status', header: 'Status' },
         { field: 'isActive', header: 'Active' }
     ];
+
+    // Obtener el rol del usuario al inicializar el componente
+    this.authService.isAdmin().subscribe(
+      (isAdmin: boolean) => {
+        this.showUsersOption = isAdmin;
+      },
+      (error) => {
+        console.error('Error al obtener el rol del usuario.', error);
+      }
+    );
   }
 
   getSeverity(status: string | undefined): "success" | "warning" | "danger" | undefined {

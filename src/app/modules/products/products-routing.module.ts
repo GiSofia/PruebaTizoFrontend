@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
+import { UserRoleGuard } from 'src/app/guards/user-role.guard';
 
 //localhost:4200/products
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {
     path: 'product-list/product-update/:id',
     component: ProductUpdateComponent,
+    canActivate: [UserRoleGuard]
   },
   {
     path: '**',

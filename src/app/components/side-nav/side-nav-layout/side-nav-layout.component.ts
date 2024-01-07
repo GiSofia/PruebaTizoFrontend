@@ -11,6 +11,8 @@ export class SideNavLayoutComponent implements OnInit {
 
   @Input() sideNavStatus: boolean = false;
 
+  showUsersOption: boolean = false;
+
   list = [
     {
       number: '1',
@@ -34,7 +36,8 @@ export class SideNavLayoutComponent implements OnInit {
       number: '4',
       name: 'Users',
       icon: 'fa-solid fa-user',
-      route: '/users'
+      route: '/users',
+      showForAdmin: true
     },
     {
       number: '5',
@@ -46,12 +49,21 @@ export class SideNavLayoutComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isAdmin().subscribe(
+      (isAdmin: boolean) => {
+        this.showUsersOption = isAdmin;
+      },
+      (error) => {
+        console.error('Error al obtener el rol del usuario.', error);
+      }
+    );
+  }
 
   logout(): void {
     this.authService.logout();
 
-    console.log('Sesión cerrada');
+    //console.log('Sesión cerrada');
 
     this.router.navigate(['auth/login']);
   }

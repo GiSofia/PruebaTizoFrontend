@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/interfaces/category.interface';
+import { AuthService } from 'src/app/services/authLogin/auth.service';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 
 @Component({
@@ -15,9 +16,11 @@ export class CategoryListComponent implements OnInit {
   cols: any[] = [];
   searchTerm: number = 0;
   notFoundMessage: string = '';
-  emptyTableMessage: string = ''
+  emptyTableMessage: string = '';
+  isAdmin: boolean = false;
+  showUsersOption: boolean = false;
 
-  constructor(private categoriesService: CategoriesService, private toastr: ToastrService, private router: Router){}
+  constructor(private categoriesService: CategoriesService, private authService: AuthService, private toastr: ToastrService, private router: Router){}
 
   ngOnInit(): void {
     this.categoriesService.getCategory()
@@ -29,6 +32,16 @@ export class CategoryListComponent implements OnInit {
         { field: 'categoryName', header: 'Category Name' },
         { field: 'isActive', header: 'Active' }
     ];
+
+    // Obtener el rol del usuario al inicializar el componente
+    this.authService.isAdmin().subscribe(
+      (isAdmin: boolean) => {
+        this.showUsersOption = isAdmin;
+      },
+      (error) => {
+        console.error('Error al obtener el rol del usuario.', error);
+      }
+    );
   }
 
   searchCategories(): void {

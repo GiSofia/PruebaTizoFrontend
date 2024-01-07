@@ -12,7 +12,6 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getUser():Observable<User[]>{
-
     return this.http.get<User[]>(`${this.baseUrl}/users`);
   }
 

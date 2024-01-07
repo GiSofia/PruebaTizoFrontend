@@ -17,7 +17,7 @@
         <!-- ID -->
         <div class="p-field mt-2">
           <label for="id">ID</label>
-          <input id="id" type="text" pInputText formControlName="id" required />
+          <input id="id" type="number" pInputText formControlName="id" required />
           <div *ngIf="userForm.get('id')?.hasError('required')" class="text-danger">
             ID is required.
           </div>
