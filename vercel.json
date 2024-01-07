@@ -1,8 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "angular.json", "use": "@vercel/static-build" },
-    { "src": "backend", "use": "@vercel/static-build" }
+    { "src": "package.json", "use": "@vercel/static-build" },
+    { "src": "data/db.json", "use": "@vercel/static-build" },
+    { "src": "data/db-back.json", "use": "@vercel/static-build" }
   ],
   "routes": [
     { "handle": "filesystem" },
