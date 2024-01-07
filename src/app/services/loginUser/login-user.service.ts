@@ -13,10 +13,10 @@ export class LoginUserService {
   constructor(private http: HttpClient) { }
 
   addLoginUser(loginUser: LoginUser) {
-    return this.http.post<LoginUser>(this.baseUrl, loginUser);
+    return this.http.post<LoginUser>(`${this.baseUrl}/loginUser`,loginUser);
   }
 
   updateLoginUser(loginUser: LoginUser) {
-    return this.http.put<LoginUser>(`${this.baseUrl}/${loginUser.id}`,loginUser);
+    return this.http.put<LoginUser>(`${this.baseUrl}/loginUser/${loginUser.id}`, loginUser);
   }
 }

@@ -43,6 +43,17 @@
       "jobTitle": "Marketing Specialist ",
       "birthDate": "2009-01-07",
       "isActive": "true"
+    },
+    {
+      "id": "5",
+      "name": "Luisa",
+      "lastName": "Narvaez",
+      "email": "luisa@gigistore.com",
+      "password": "170*",
+      "role": "user",
+      "jobTitle": "Support Tech",
+      "birthDate": "1997-07-11",
+      "isActive": "true"
     }
   ],
   "loginUser": [
@@ -63,6 +74,18 @@
       "email": "luis@gigistore.com",
       "password": "LH09",
       "isActive": true
+    },
+    {
+      "id": 3,
+      "email": "cristina@gigistore.com",
+      "password": "car20",
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "email": "luisa@gigistore.com",
+      "password": "170*",
+      "isActive": "true"
     }
   ],
   "categories": [

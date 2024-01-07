@@ -52,30 +52,24 @@ export class UserUpdateComponent {
   goBack(): void {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
+  onSubmit(): void {
+    if (this.userForm.invalid) return;
 
-  onSubmit(): void{
+    // Actualizar el usuario
+    this.usersService.updateUser(this.currentUser).subscribe(updatedUser => {
+      this.toastr.success(`User ${updatedUser.name} with id ${updatedUser.id} updated!`);
 
-    if(this.userForm.invalid) return;
+      // Actualizar la información de inicio de sesión
+      const loginUserData = {
+        id: updatedUser.id,
+        email: this.currentUser.email,
+        password: this.currentUser.password,
+        isActive: this.currentUser.isActive,
+      };
 
-    if(this.currentUser.id){
-      this.usersService.updateUser(this.currentUser)
-      .subscribe(user =>{
-        this.toastr.success(`User ${user.name} with id ${user.id} updated!`);
+      this.loginService.updateLoginUser(loginUserData).subscribe(() => {
+        this.toastr.success(`LoginUser update!`);
       });
-
-      return
-    }
-
-    const loginUserData = {
-      id: this.currentUser.id,
-      email: this.currentUser.email,
-      password: this.currentUser.password,
-      isActive: this.currentUser.isActive,
-    };
-
-    this.loginService.updateLoginUser(loginUserData)
-    .subscribe(() => {
-      this.toastr.success(`UserLogin update!`);
     });
   }
 }
