@@ -97,7 +97,7 @@
     {
       "id": 2,
       "category_name": "Joyeria",
-      "isActive": true
+      "isActive": "true"
     },
     {
       "id": 3,
@@ -146,6 +146,15 @@
       "price": 12,
       "status": "InStock",
       "isActive": "true"
+    },
+    {
+      "id": "006",
+      "product_name": "Palette Milani",
+      "description": "Palette Milani Punk",
+      "quantity": 5,
+      "price": 8,
+      "status": "InStock",
+      "isActive": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/interfaces/category.interface';
@@ -13,9 +13,9 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 })
 export class CategoryUpdateComponent {
   public categoryForm = new FormGroup({
-    id:            new FormControl(0),
-    category_name: new FormControl(''),
-    isActive:      new FormControl(true)
+    id:            new FormControl(0, [Validators.required, Validators.min(1)]),
+    category_name: new FormControl('', [Validators.required]),
+    isActive:     new FormControl(true, [Validators.required])
   });
 
   constructor(private categoriesService: CategoriesService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute){}

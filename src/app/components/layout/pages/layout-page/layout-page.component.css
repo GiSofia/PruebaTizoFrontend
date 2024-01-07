@@ -17,7 +17,7 @@ main {
 
 app-side-nav-layout {
   width: 60px;
-  height: 100vh;
+  height: 120vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background-color: rgba(34, 34, 34, 1);
   border-top: 1px solid white;

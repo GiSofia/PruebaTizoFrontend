@@ -18,48 +18,78 @@
         <div class="p-field mt-2">
           <label for="id">ID</label>
           <input id="id" type="text" pInputText formControlName="id" required />
+          <div *ngIf="productForm.get('id')?.hasError('required')" class="text-danger">
+            ID is required.
+          </div>
+          <div *ngIf="productForm.get('id')?.hasError('minlength')" class="text-danger">
+            ID must be at least 3 characters long.
+          </div>
+          <div *ngIf="productForm.get('id')?.hasError('maxlength')" class="text-danger">
+            ID cannot be more than 3 characters long.
+          </div>
         </div>
 
         <!-- Product Name -->
         <div class="p-field mt-2">
           <label for="product_name">Product Name</label>
           <input id="product_name" type="text" pInputText formControlName="product_name" required />
+          <div *ngIf="productForm.get('product_name')?.hasError('required')" class="text-danger">
+            Product Name is required.
+          </div>
         </div>
 
         <!-- Description -->
         <div class="p-field mt-2">
           <label for="description">Description</label>
           <input id="description" type="text" pInputText formControlName="description" required />
+          <div *ngIf="productForm.get('description')?.hasError('required')" class="text-danger">
+            Description is required.
+          </div>
         </div>
 
         <!-- Quantity -->
         <div class="p-field mt-2">
           <label for="quantity">Quantity</label>
-          <p-inputNumber id="quantity"  formControlName="quantity" class="p-inputtext-sm"></p-inputNumber>
+          <p-inputNumber id="quantity" formControlName="quantity" class="p-inputtext-sm"></p-inputNumber>
+          <div *ngIf="productForm.get('quantity')?.hasError('required')" class="text-danger">
+            Quantity is required.
+          </div>
+          <div *ngIf="productForm.get('quantity')?.hasError('min')" class="text-danger">
+            Quantity must be greater than 0.
+          </div>
         </div>
 
         <!-- Price -->
         <div class="p-field mt-2">
           <label for="price">Price</label>
           <p-inputNumber id="price" formControlName="price" class="p-inputtext-sm"></p-inputNumber>
+          <div *ngIf="productForm.get('price')?.hasError('required')" class="text-danger">
+            Price is required.
+          </div>
+          <div *ngIf="productForm.get('price')?.hasError('min')" class="text-danger">
+            Price must be greater than 0.
+          </div>
         </div>
 
         <!-- Status -->
         <div class="p-field mt-2">
           <label for="status">Status</label>
-          <input id="status" type="text" pInputText formControlName="status" required/>
+          <input id="status" type="text" pInputText formControlName="status" required />
+          <div *ngIf="productForm.get('status')?.hasError('required')" class="text-danger">
+            Status is required.
+          </div>
         </div>
 
-         <!-- Is Active -->
-         <div class="p-field mt-2" hidden>
+        <!-- Is Active -->
+        <div class="p-field mt-2" hidden>
           <label for="isActive">Is Active</label>
           <input id="isActive" type="text" pInputText formControlName="isActive" required/>
         </div>
 
         <!-- Save Changes Button -->
         <div class="d-flex justify-content-end p-2 mt-3">
-          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2"><i class="fa-solid fa-floppy-disk"></i>
-            Save Changes
+          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2" [disabled]="productForm.invalid">
+            <i class="fa-solid fa-floppy-disk"></i> Save Changes
           </button>
         </div>
     </form>

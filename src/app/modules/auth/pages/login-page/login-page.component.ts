@@ -36,12 +36,12 @@ export class LoginPageComponent {
             this.toastr.success('Logged In!');
             this.router.navigate(['/dashboard']);
           } else {
-            this.toastr.error('Credenciales incorrectas.');
+            this.toastr.error('Incorrect credentials.');
           }
         },
         (error) => {
-          console.error('Error de autenticación', error);
-          this.toastr.error('Error de autenticación. Por favor, inténtalo de nuevo.');
+          console.error('Authentication Error.', error);
+          this.toastr.error('Authentication Error. Please try again.');
         }
       );
     }

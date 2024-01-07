@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/interfaces/product.interface';
@@ -13,13 +13,13 @@ import { ProductsService } from 'src/app/services/products/products.service';
 export class ProductUpdateComponent {
 
   public productForm = new FormGroup({
-    id:            new FormControl(''),
-    product_name: new FormControl(''),
-    description:   new FormControl(''),
-    quantity:        new FormControl(0),
-    price:         new FormControl(0),
-    status:       new FormControl(''),
-    isActive:       new FormControl(true),
+    id: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+    product_name: new FormControl('', [Validators.required]),
+    description:   new FormControl('', [Validators.required]),
+    quantity: new FormControl(0, [Validators.required, Validators.min(1)]),
+    price: new FormControl(0, [Validators.required, Validators.min(1)]),
+    status:       new FormControl('', [Validators.required]),
+    isActive:      new FormControl(true)
   });
 
   constructor(private productsService: ProductsService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute){}

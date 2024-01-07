@@ -15,27 +15,40 @@
   <div class="card col-md-6 p-2 mb-3">
       <form [formGroup]="categoryForm" class="p-formgrid p-fluid" (ngSubmit)="onSubmit()">
         <!-- ID -->
-        <div class="p-field mt-2" hidden>
+        <div class="p-field mt-2">
           <label for="id">ID</label>
-          <p-inputNumber id="id"  formControlName="id" class="p-inputtext-sm"></p-inputNumber>
+          <input id="id" type="text" pInputText formControlName="id" required />
+          <div *ngIf="categoryForm.get('id')?.hasError('required')" class="text-danger">
+            ID is required.
+          </div>
+          <div *ngIf="categoryForm.get('id')?.hasError('min')" class="text-danger">
+            ID must be greater than 0.
+          </div>
         </div>
+
 
         <!-- Category Name -->
         <div class="p-field mt-2">
           <label for="category_name">Category Name</label>
           <input id="category_name" type="text" pInputText formControlName="category_name" required />
+          <div *ngIf="categoryForm.get('category_name')?.hasError('required')" class="text-danger">
+            Category Name is required.
+          </div>
         </div>
 
         <!-- Is Active -->
-        <div class="p-field mt-2" >
+        <div class="p-field mt-2">
           <label for="isActive">Is Active</label>
           <input id="isActive" type="text" pInputText formControlName="isActive" required/>
+          <div *ngIf="categoryForm.get('isActive')?.hasError('required')" class="text-danger">
+            IsActive is required.
+          </div>
         </div>
 
         <!-- Save Changes Button -->
         <div class="d-flex justify-content-end p-2 mt-3">
-          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2"><i class="fa-solid fa-floppy-disk"></i>
-            Save Changes
+          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2" [disabled]="categoryForm.invalid">
+            <i class="fa-solid fa-floppy-disk"></i> Save Changes
           </button>
         </div>
     </form>
