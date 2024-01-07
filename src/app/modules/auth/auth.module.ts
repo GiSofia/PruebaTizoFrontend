@@ -3,17 +3,26 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { AuthPageComponent } from './pages/auth-page/auth-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    LayoutPageComponent
+    AuthPageComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputNumberModule,
+    ToastrModule.forRoot(),
   ]
 })
 export class AuthModule { }

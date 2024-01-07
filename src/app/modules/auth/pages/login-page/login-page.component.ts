@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/authLogin/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -6,5 +10,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
+  public loginForm: FormGroup;
 
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required)
+    });
+  }
+
+  login(): void {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+
+      this.authService.login(email, password).subscribe(
+        (response: any) => {
+          console.log('Operación exitosa');
+          this.authService.saveToken(response.token);
+
+          this.toastr.success('Logged in!');
+          // Redirige al usuario al dashboard después del inicio de sesión
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          console.error('Error de autenticación', error);
+        }
+      );
+    }
+  }
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutPageComponent } from './layout-page.component';
+import { AuthPageComponent } from './auth-page.component';
 
-describe('LayoutPageComponent', () => {
-  let component: LayoutPageComponent;
-  let fixture: ComponentFixture<LayoutPageComponent>;
+describe('AuthPageComponent', () => {
+  let component: AuthPageComponent;
+  let fixture: ComponentFixture<AuthPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LayoutPageComponent ]
+      declarations: [ AuthPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LayoutPageComponent);
+    fixture = TestBed.createComponent(AuthPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

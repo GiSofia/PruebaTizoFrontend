@@ -43,6 +43,12 @@
       "email": "marcela@gigistore.com",
       "password": "marce123*",
       "isActive": true
+    },
+    {
+      "id": 3,
+      "email": "luis@gigistore.com",
+      "password": "LH09",
+      "isActive": true
     }
   ],
   "categories": [

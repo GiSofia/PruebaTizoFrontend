@@ -1,1 +1,30 @@
-<p>login-page works!</p>
+<div class="container-main-login-page">
+  <div class="container-main login-page-title">
+    <p class="fs-1 fw-bold">Log In</p>
+  </div>
+
+    <div class="card col-md-4 p-2 mb-3 mx-auto">
+      <form [formGroup]="loginForm" class="p-formgrid p-fluid">
+        <!-- Email -->
+        <div class="p-field mt-2">
+          <label for="email">Email</label>
+          <input id="email" type="text" pInputText formControlName="email" required />
+        </div>
+
+        <!-- Password -->
+        <div class="p-field mt-2">
+          <label for="password">Password</label>
+          <input id="password" type="password" pInputText formControlName="password" placeholder="*********" required/>
+        </div>
+
+        <!-- Save Changes Button -->
+        <div class="d-flex justify-content-end p-2 mt-3">
+          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2"><i class="fa-solid fa-right-to-bracket" (click)="login()"></i>
+            Log In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
