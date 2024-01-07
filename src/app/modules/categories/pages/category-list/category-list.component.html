@@ -1,0 +1,52 @@
+<div class="container-main-category">
+
+  <div class="container-main category-title">
+    <p class="fs-1 fw-bold">Categories</p>
+  </div>
+
+  <div class="container-buttons-category d-flex flex-column flex-sm-row justify-content-between mb-3">
+    <div class="add-button-category mb-3 mb-sm-0">
+      <button type="button" class="btn btn-primary" [routerLink]="['category-add']">
+        <i class="fa-solid fa-plus"></i> Add Category
+      </button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by ID" class="custom-input-search">
+        <button type="button" class="btn btn-primary" (click)="searchCategories()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+  </div>
+
+  <div *ngIf="categories.length === 0 && !notFoundMessage" class="alert alert-info">
+    No hay categorias para mostrar en la tabla.
+  </div>
+
+
+  <div class="card" style="max-width: 30rem;">
+    <p-table [value]="categories" [tableStyle]="{'max-width': '30rem'}">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Name</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-category let-columns="columns">
+          <tr>
+              <td>{{category.category_name}}</td>
+              <td>{{category.isActive}}</td>
+              <td class="button-actions-category d-flex align-items-center" *ngIf="showUsersOption">
+                <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}" [routerLink]="['category-update', category.id]">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}" (click)="deleteCategory(category.id)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+          </tr>
+        </ng-template>
+    </p-table>
+  </div>
+</div>

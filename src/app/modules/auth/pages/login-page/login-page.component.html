@@ -1,1 +1,39 @@
-<p>login-page works!</p>
+<div class="container-main-login-page">
+  <div class="container-main login-page-title">
+    <p class="fs-1 fw-bold">Log In</p>
+  </div>
+
+    <div class="card col-md-4 p-2 mb-3 mx-auto">
+      <form [formGroup]="loginForm" class="p-formgrid p-fluid" (ngSubmit)="login()">
+        <!-- Email -->
+        <div class="p-field mt-2">
+          <label for="email">Email</label>
+          <input id="email" type="email" pInputText formControlName="email" required />
+          <div *ngIf="loginForm.get('email')?.hasError('required')" class="text-danger">
+            Email is required.
+          </div>
+          <div *ngIf="loginForm.get('email')?.hasError('email')" class="text-danger">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="p-field mt-2">
+          <label for="password">Password</label>
+          <input id="password" type="password" pInputText formControlName="password" required />
+          <div *ngIf="loginForm.get('password')?.hasError('required')" class="text-danger">
+            Password is required.
+          </div>
+        </div>
+
+        <!-- Save Changes Button -->
+        <div class="d-flex justify-content-end p-2 mt-3 ml-auto">
+          <button type="submit" label="Save Changes" class="btn btn-success btn-sm p-2" [disabled]="loginForm.invalid">
+            <i class="fa-solid fa-right-to-bracket"></i> Log In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+

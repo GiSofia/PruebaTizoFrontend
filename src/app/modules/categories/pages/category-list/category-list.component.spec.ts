@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutPageComponent } from './layout-page.component';
+import { CategoryListComponent } from './category-list.component';
 
-describe('LayoutPageComponent', () => {
-  let component: LayoutPageComponent;
-  let fixture: ComponentFixture<LayoutPageComponent>;
+describe('CategoryListComponent', () => {
+  let component: CategoryListComponent;
+  let fixture: ComponentFixture<CategoryListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LayoutPageComponent ]
+      declarations: [ CategoryListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LayoutPageComponent);
+    fixture = TestBed.createComponent(CategoryListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

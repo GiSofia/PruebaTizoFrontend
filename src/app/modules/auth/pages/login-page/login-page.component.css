@@ -1,0 +1,12 @@
+
+.login-page-title{
+  display: flex;
+  padding: 3rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.form-login-page{
+  display: flex;
+  justify-content: center;
+}

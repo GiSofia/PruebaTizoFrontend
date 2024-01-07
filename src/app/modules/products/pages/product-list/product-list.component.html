@@ -1,0 +1,63 @@
+<div class="container-main-product">
+
+  <div class="container-main product-title">
+    <p class="fs-1 fw-bold">Products</p>
+  </div>
+
+  <div class="container-buttons-product d-flex flex-column flex-sm-row justify-content-between mb-3">
+    <div class="add-button-product mb-3 mb-sm-0">
+      <button type="button" class="btn btn-primary" [routerLink]="['product-add']">
+        <i class="fa-solid fa-plus"></i> Add Product
+      </button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by ID" class="custom-input-search">
+        <button type="button" class="btn btn-primary" (click)="searchProducts()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+  </div>
+
+  <div *ngIf="products.length === 0 && !notFoundMessage" class="alert alert-info">
+    No hay productos para mostrar en la tabla.
+  </div>
+
+
+    <div class="card">
+      <p-table [value]="products" [tableStyle]="{'min-width': '40rem'}">
+          <ng-template pTemplate="header" let-columns>
+              <tr>
+                  <th>Name </th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Active</th>
+                  <th>Actions</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.product_name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price | currency:'USD'}}</td>
+                <td><p-tag [value]="product.status" [severity]="getSeverity(product.status) ?? 'defaultSeverity'"></p-tag></td>
+                <td>{{product.isActive}}</td>
+                <td class="button-actions-product d-flex align-items-center" *ngIf="showUsersOption">
+                  <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}" [routerLink]="['product-update', product.id]">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}" (click)="deleteProduct(product.id)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+            </tr>
+        </ng-template>
+
+      </p-table>
+  </div>
+</div>
+
+

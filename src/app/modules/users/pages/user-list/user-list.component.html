@@ -1,1 +1,61 @@
-<p>user-list works!</p>
+<div class="container-main-user">
+
+  <div class="container-main user-title">
+    <p class="fs-1 fw-bold">Users</p>
+  </div>
+
+  <div class="container-buttons-user d-flex flex-column flex-sm-row justify-content-between mb-3">
+    <div class="add-button-user mb-3 mb-sm-0">
+      <button type="button" class="btn btn-primary" [routerLink]="['user-add']">
+        <i class="fa-solid fa-plus"></i> Add User
+      </button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search by ID" class="custom-input-search">
+        <button type="button" class="btn btn-primary" (click)="searchUsers()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+  </div>
+
+  <div *ngIf="users.length === 0 && !notFoundMessage" class="alert alert-info">
+    No hay usuarios para mostrar en la tabla.
+  </div>
+
+  <div class="card">
+    <p-table [value]="users" [tableStyle]="{'min-width': '40rem'}">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Name </th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Job Title</th>
+                <th>Birth Date</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user let-columns="columns">
+          <tr>
+              <td>{{user.name}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.role}}</td>
+              <td>{{user.jobTitle}}</td>
+              <td>{{user.birthDate}}</td>
+              <td>{{user.isActive}}</td>
+              <td class="button-actions-user d-flex align-items-center">
+                <button type="button" class="btn btn-info me-3" [ngStyle]="{borderRadius: 'var(--border-radius)', color: 'white'}" [routerLink]="['user-update', user.id]">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                <button type="button" class="btn btn-danger" [ngStyle]="{borderRadius: 'var(--border-radius)'}" (click)="deleteUser(user.id)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+          </tr>
+        </ng-template>
+    </p-table>
+  </div>
+</div>
